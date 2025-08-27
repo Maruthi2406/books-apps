@@ -1,3 +1,3 @@
 export default function Logo(){
-    return <div>Books DataBase</div>;
+    return <div>BooksDataBase</div>;
 }
