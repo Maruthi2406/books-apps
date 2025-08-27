@@ -1,7 +1,7 @@
 export default function Summary () {
     return(
 <div className="books-summary"> 
-    <h3>BOOKS READ SUMMARY</h3>
+    <h3>BOOKS YOU READ SUMMARY</h3>
     <div className="d-flex space">
             <div>
             <span>📕</span>

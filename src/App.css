@@ -36,6 +36,9 @@ ul.books-list {
   gap: 10px;
   margin-bottom: 10px;
 }
+.bo {
+    margin: 30px;
+}
 
 .book img {
   width: 50px;
@@ -63,7 +66,7 @@ ul.books-list {
 }
 
 .space {
-  gap: 200px;
+  gap: 10px;
   padding-left: 10px;
   margin: 10px;
 }
