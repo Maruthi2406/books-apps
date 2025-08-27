@@ -21,8 +21,7 @@ html {
 }
 
 .box {
-  box-shadow: 1px 1px 3px 4px #eee;
-  padding: 10px;
+  box-shadow: 1px 1px 3px 4px greenyellow;
   margin-top: 20px;
 }
 
@@ -46,3 +45,26 @@ ul.books-list {
   margin: 0px;
   font-size: 18px;
 }
+
+.d-flex {
+  display: flex;
+  gap: 40px;
+}
+.main > div {
+  flex:1;
+}
+
+.books-summary h3 {
+  margin: 10px;
+  text-align: center;
+  background-color:goldenrod;
+  padding: 10px;
+  
+}
+
+.space {
+  gap: 200px;
+  padding-left: 10px;
+  margin: 10px;
+}
+
