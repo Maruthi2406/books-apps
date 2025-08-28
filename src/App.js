@@ -3,7 +3,12 @@ import { useState } from 'react';
 import './App.css';
 import NavBar from './Components/NavBar';
 import Main from './Components/Main';
-
+import Result from './Components/Result';
+import ListBox from './Components/ListBox';
+import BooksList from './Components/BooksList';
+import BooksRead from './Components/BooksRead';
+import Summary from './Components/Summary';
+import CompletedBook from './Components/CompletedBook';
 const books = [
   {
     isbn: '9788129112859',
@@ -83,8 +88,19 @@ function App() {
   const [booksReadData, setBooksReadData] = useState(booksRead);
   return (
     <>
-      <NavBar />
-      <Main booksData ={booksData} booksReadData={booksReadData}/>
+    <NavBar>
+      <Result booksData={booksData}/>
+    </NavBar>
+      <Main>
+      <ListBox>
+      <BooksList booksData={booksData} />
+      </ListBox>
+      <BooksRead booksReadData={booksReadData}> 
+      <Summary>
+      <CompletedBook/>
+      </Summary>
+      </BooksRead> 
+      </Main>
     </>
   );
 }

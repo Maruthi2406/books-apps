@@ -1,3 +1,3 @@
-export default function Result (){
-    return <div>Find X results</div>;
+export default function Result ({booksData}){
+    return <div>Find {booksData.length} results</div>;
 }

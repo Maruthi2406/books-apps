@@ -1,8 +1,8 @@
 import { useState } from "react";
 import CompletedBook from "./CompletedBook";
-import Summary from "./Summary"
 
-export default function BooksRead ({booksReadData}) {
+
+export default function BooksRead ({children,booksReadData}) {
    const[open, setOpen]=useState(true)
     return (
     <div className="box"> 
@@ -10,7 +10,7 @@ export default function BooksRead ({booksReadData}) {
    <button className="plus" onClick={()=>setOpen((open)=>!open)}>
       {open?"-":"+"} </button>
 </div>
-    {open &&(<><Summary />
+    {open &&(<>{children}
     <ul>
     {booksReadData.map((bo)=>
        <CompletedBook bo={bo} key={bo.isbn}/> )}
