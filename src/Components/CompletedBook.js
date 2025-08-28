@@ -1,3 +1,5 @@
+
+
 export default function CompletedBook({bo}) {
     return(
 
@@ -16,6 +18,5 @@ export default function CompletedBook({bo}) {
         </div>
       </div>
        </li> 
-
     );
 }

@@ -73,3 +73,15 @@ ul.books-list {
   margin: 10px;
 }
 
+.plus{
+  text-align: end;
+  font-weight:bold;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+}
+
+.btn{
+  display: flex;
+  gap: 12px;
+}
