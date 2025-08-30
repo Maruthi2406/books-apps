@@ -14,11 +14,6 @@ export default function ListBox ({children}){
 
  {open && children} 
 
-    <div className="btn">
-      <button onClick={() => setOpen(true)}>Open </button>
-      <button onClick={() => setOpen(false)}>Close </button>
-    </div>
-
 </div>
     )
 }
