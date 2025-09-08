@@ -84,9 +84,16 @@ const booksRead = [
   }
 ];
 
+const API_KEY=`AIzaSyCvVOZTGms2rpaRWOaUdLNUqd_-q7Oo2E4`
 function App() {
   const [booksData, setBooksData] = useState(books);
   const [booksReadData, setBooksReadData] = useState(booksRead);
+  
+fetch(`https://www.googleapis.com/books/v1/volumes?q=monk+ferarri&key=${API_KEY}`)
+.then((response)=>response.json())
+.then((data)=>console.log(data))
+.catch(error =>console.log(error));
+
   return (
     <>
     <NavBar>
