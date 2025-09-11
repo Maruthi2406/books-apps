@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import NavBar from './Components/NavBar';
 import Main from './Components/Main';
@@ -10,6 +10,8 @@ import BooksRead from './Components/BooksRead';
 import Summary from './Components/Summary';
 import CompletedBook from './Components/CompletedBook';
 import Button from './Components/Button';
+import fulldata from './Components/services/fulldata.js';
+
 const books = [
   {
     isbn: '9788129112859',
@@ -86,13 +88,22 @@ const booksRead = [
 
 const API_KEY=`AIzaSyCvVOZTGms2rpaRWOaUdLNUqd_-q7Oo2E4`
 function App() {
-  const [booksData, setBooksData] = useState(books);
+  const [booksData, setBooksData] = useState([]);
   const [booksReadData, setBooksReadData] = useState(booksRead);
   
-fetch(`https://www.googleapis.com/books/v1/volumes?q=monk+ferarri&key=${API_KEY}`)
-.then((response)=>response.json())
-.then((data)=>console.log(data))
-.catch(error =>console.log(error));
+
+async function fetchPost (){
+  const response =await fetch(`https://www.googleapis.com/books/v1/volumes?q=monk+ferarri&key=${API_KEY}`);
+  const data  =await response.json();
+  console.log(data);
+  setBooksData(fulldata(data));
+}
+
+ useEffect(() => {
+    fetchPost();
+  }, []);
+
+
 
   return (
     <>
