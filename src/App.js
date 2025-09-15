@@ -9,9 +9,9 @@ import BooksList from './Components/BooksList';
 import BooksRead from './Components/BooksRead';
 import Summary from './Components/Summary';
 import CompletedBook from './Components/CompletedBook';
-import Button from './Components/Button';
 import fulldata from './Components/services/fulldata.js';
-
+import Loader from './Components/Loader.js';
+import Error from './Components/Error.js';
 
 const booksRead = [
   {
@@ -54,13 +54,26 @@ const API_KEY=`AIzaSyCvVOZTGms2rpaRWOaUdLNUqd_-q7Oo2E4`
 function App() {
   const [booksData, setBooksData] = useState([]);
   const [booksReadData, setBooksReadData] = useState(booksRead);
+  const [loading, setLoading]=useState(false);
+  const [error, setError]=useState("");
   
 
 async function fetchPost (){
+  try
+  {
+  setLoading(true);
   const response =await fetch(`https://www.googleapis.com/books/v1/volumes?q=monk+ferarri&key=${API_KEY}`);
   const data  =await response.json();
   console.log(data);
+  if (!data.items?.length) throw new Error('No Books Data Available'); // Handle no JSON data or empty items
   setBooksData(fulldata(data));
+  setLoading(false)
+  } catch(error)
+  {
+    setLoading(false);
+    setError(error.message);
+    console.log(error.message);
+  }
 }
 
  useEffect(() => {
@@ -76,8 +89,10 @@ async function fetchPost (){
     </NavBar>
       <Main>
       <ListBox>
-      <BooksList booksData={booksData} />
-      <Button />
+        {loading && <Loader />}
+        {!loading && !error && <BooksList booksData={booksData} />} 
+        {/* network error,"" empty space (false)   " " single space true*/}
+        {error && <Error message={error}/>}
       </ListBox>
 
       <BooksRead booksReadData={booksReadData}> 

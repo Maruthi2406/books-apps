@@ -85,3 +85,8 @@ ul.books-list {
   display: flex;
   gap: 12px;
 }
+
+.loader {
+  text-align:center;
+  
+}

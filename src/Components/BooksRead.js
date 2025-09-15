@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CompletedBook from "./CompletedBook";
-import Button from "./Button";
+
 
 
 export default function BooksRead ({children,booksReadData}) {
@@ -16,7 +16,7 @@ export default function BooksRead ({children,booksReadData}) {
     {booksReadData.map((bo)=>
        <CompletedBook bo={bo} key={bo.isbn}/> )}
     </ul></>)}
-    <Button />
+    
 
     </div>
      );
