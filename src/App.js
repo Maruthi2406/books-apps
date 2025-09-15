@@ -65,7 +65,7 @@ async function fetchPost (){
   const response =await fetch(`https://www.googleapis.com/books/v1/volumes?q=monk+ferarri&key=${API_KEY}`);
   const data  =await response.json();
   console.log(data);
-  if (!data.items?.length) throw new Error('No Books Data Available'); // Handle no JSON data or empty items
+  if (!data.items?.length) throw new Error('No Books Data Available'); // Handle no JSON data or empty items in json 
   setBooksData(fulldata(data));
   setLoading(false)
   } catch(error)
