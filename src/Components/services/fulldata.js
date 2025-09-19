@@ -1,6 +1,7 @@
 export default function fulldata(data){
     let books=[];
     for (let item of data.items){
+        if(item.volumeInfo.industryIdentifiers){
         let book={
                     title: item.volumeInfo.title,
                     isbn: item.volumeInfo.industryIdentifiers[0].identifier,
@@ -11,6 +12,7 @@ export default function fulldata(data){
                                                         };
             books.push(book);
         }
+    }
         console.log(books);
         return books
     }

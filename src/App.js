@@ -12,6 +12,8 @@ import CompletedBook from './Components/CompletedBook';
 import fulldata from './Components/services/fulldata.js';
 import Loader from './Components/Loader.js';
 import Error from './Components/Error.js';
+import Search from './Components/Search.js';
+
 
 const booksRead = [
   {
@@ -56,13 +58,15 @@ function App() {
   const [booksReadData, setBooksReadData] = useState(booksRead);
   const [loading, setLoading]=useState(false);
   const [error, setError]=useState("");
+  const [query, setQuery] = useState("")
   
 
 async function fetchPost (){
   try
   {
   setLoading(true);
-  const response =await fetch(`https://www.googleapis.com/books/v1/volumes?q=monk+ferarri&key=${API_KEY}`);
+  setError("");
+  const response =await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API_KEY}`);
   const data  =await response.json();
   console.log(data);
   if (!data.items?.length) throw new Error('No Books Data Available'); // Handle no JSON data or empty items in json 
@@ -77,14 +81,18 @@ async function fetchPost (){
 }
 
  useEffect(() => {
+  if(query.length < 4){
+    return;
+  }
     fetchPost();
-  }, []);
+  }, [query ]);
 
 
 
   return (
     <>
     <NavBar>
+      <Search query={query} setQuery={setQuery}/>
       <Result booksData={booksData}/>
     </NavBar>
       <Main>
