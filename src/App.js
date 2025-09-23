@@ -62,9 +62,6 @@ function App() {
   const [query, setQuery] = useState("")
   const [selectedisbn, setSelectedisbn]=useState("")
 
-  function handleSelectedisbn(isbn){
-    setSelectedisbn(isbn);
-  }
   
 
 async function fetchPost (){
@@ -93,7 +90,13 @@ async function fetchPost (){
     fetchPost();
   }, [query]);
 
-
+function handleSelectedisbn(isbn){
+    setSelectedisbn((selectedisbn)=>(isbn===selectedisbn)?"":isbn);
+  }
+  
+  function handleBack(){
+    setSelectedisbn();
+  }
 
   return (
     <>
@@ -110,7 +113,7 @@ async function fetchPost (){
       </ListBox>
 
       <BooksRead booksReadData={booksReadData}> 
-      {selectedisbn?<FullBookDeatils selectedisbn={selectedisbn}/>:
+      {selectedisbn?<FullBookDeatils selectedisbn={selectedisbn} handleBack={handleBack}/>:
       <div><Summary>
         <CompletedBook />
       </Summary></div>}

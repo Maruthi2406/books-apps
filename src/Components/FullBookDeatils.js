@@ -1,6 +1,10 @@
-export default function FullBookDeatils({selectedisbn}){
+export default function FullBookDeatils({selectedisbn, handleBack}){
     return(
-        <div>{selectedisbn}</div>
+        <div>
         
+        <div>{selectedisbn}</div>
+        <button onClick={handleBack}>Back</button>
+        </div>
+     
     );
 }
