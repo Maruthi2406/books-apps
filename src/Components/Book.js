@@ -1,6 +1,6 @@
-export default function Book ({boo}){
+export default function Book ({boo,handleSelectedisbn}){
     return(
-        <li className="book bo">
+        <li className="book bo" onClick={handleSelectedisbn}>
                     <img src={boo.image} alt="Error"/>
                      <div>
                           <h3>{boo.title}</h3>

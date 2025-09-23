@@ -8,11 +8,12 @@ import ListBox from './Components/ListBox';
 import BooksList from './Components/BooksList';
 import BooksRead from './Components/BooksRead';
 import Summary from './Components/Summary';
-import CompletedBook from './Components/CompletedBook';
 import fulldata from './Components/services/fulldata.js';
 import Loader from './Components/Loader.js';
 import Error from './Components/Error.js';
 import Search from './Components/Search.js';
+import FullBookDeatils from './Components/FullBookDeatils.js';
+import CompletedBook from './Components/CompletedBook.js';
 
 
 const booksRead = [
@@ -59,6 +60,11 @@ function App() {
   const [loading, setLoading]=useState(false);
   const [error, setError]=useState("");
   const [query, setQuery] = useState("")
+  const [selectedisbn, setSelectedisbn]=useState("")
+
+  function handleSelectedisbn(isbn){
+    setSelectedisbn(isbn);
+  }
   
 
 async function fetchPost (){
@@ -85,7 +91,7 @@ async function fetchPost (){
     return;
   }
     fetchPost();
-  }, [query ]);
+  }, [query]);
 
 
 
@@ -98,15 +104,16 @@ async function fetchPost (){
       <Main>
       <ListBox>
         {loading && <Loader />}
-        {!loading && !error && <BooksList booksData={booksData} />} 
+        {!loading && !error && <BooksList booksData={booksData} handleSelectedisbn={handleSelectedisbn}/>} 
         {/* network error,"" empty space (false)   " " single space true*/}
         {error && <Error message={error}/>}
       </ListBox>
 
       <BooksRead booksReadData={booksReadData}> 
-      <Summary>
-      <CompletedBook/>
-      </Summary>
+      {selectedisbn?<FullBookDeatils selectedisbn={selectedisbn}/>:
+      <div><Summary>
+        <CompletedBook />
+      </Summary></div>}
       </BooksRead> 
       </Main>
     </>
