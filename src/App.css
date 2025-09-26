@@ -90,3 +90,17 @@ ul.books-list {
   text-align:center;
   
 }
+
+.book-details {
+  padding: 10px;
+  gap: 10px;
+}
+
+.book-details h2 {
+  margin: 0px;
+}
+
+.book-details ul {
+  padding: 0px;
+  list-style: none;
+}

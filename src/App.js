@@ -60,7 +60,7 @@ function App() {
   const [loading, setLoading]=useState(false);
   const [error, setError]=useState("");
   const [query, setQuery] = useState("")
-  const [selectedisbn, setSelectedisbn]=useState("")
+  const [selectedid, setSelectedid]=useState("")
 
   
 
@@ -90,12 +90,12 @@ async function fetchPost (){
     fetchPost();
   }, [query]);
 
-function handleSelectedisbn(isbn){
-    setSelectedisbn((selectedisbn)=>(isbn===selectedisbn)?"":isbn);
+function handleSelectedid(id){
+    setSelectedid((selectedid)=>(id===selectedid)?"":id);
   }
   
   function handleBack(){
-    setSelectedisbn();
+    setSelectedid();
   }
 
   return (
@@ -107,13 +107,13 @@ function handleSelectedisbn(isbn){
       <Main>
       <ListBox>
         {loading && <Loader />}
-        {!loading && !error && <BooksList booksData={booksData} handleSelectedisbn={handleSelectedisbn}/>} 
+        {!loading && !error && <BooksList booksData={booksData} handleSelectedid={handleSelectedid}/>} 
         {/* network error,"" empty space (false)   " " single space true*/}
         {error && <Error message={error}/>}
       </ListBox>
 
       <BooksRead booksReadData={booksReadData}> 
-      {selectedisbn?<FullBookDeatils selectedisbn={selectedisbn} handleBack={handleBack}/>:
+      {selectedid?<FullBookDeatils selectedid={selectedid} handleBack={handleBack}/>:
       <div><Summary>
         <CompletedBook />
       </Summary></div>}
