@@ -14,7 +14,7 @@ export function singleBookObject(item){
                     id:item.id,
                     title: item.volumeInfo.title,
                     isbn: item.industryIdentifiers?.[0]?.identifier ?? "No ISBN",
-                    image: item.volumeInfo.imageLinks?.thumbnail ?? "No Image",
+                    image: item.volumeInfo.imageLinks?.thumbnail,
                     publisher: item.volumeInfo.publisher,
                     rating: 4.5,
                     year: item.volumeInfo.publishedDate
